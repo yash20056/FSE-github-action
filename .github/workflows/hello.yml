@@ -13,6 +13,7 @@ jobs:
           echo "Welcome to GitHub Actions"
 
   say-bye:
+    needs: say-hello
     runs-on: ubuntu-latest
 
     steps:
