@@ -7,16 +7,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print name
-        run: |
-          echo "Hello, Yash"
-          echo "Welcome to GitHub Actions"
-
+      - name: Print message
+        run: echo "hello, Github Actions" 
+  
   say-bye:
     needs: say-hello
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print goodbye message
-        run: |
-          echo "Good bye from second job"
+      - name: Print message
+        run: echo "BYE, Github Actions"
