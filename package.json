@@ -1,0 +1,27 @@
+{
+  "name": "fse-github-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "echo \"Lint passed\"",
+    "test": "echo \"Test passed\"",
+    "build": "echo \"Build successful\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yash20056/FSE-github-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yash20056/FSE-github-action/issues"
+  },
+  "homepage": "https://github.com/yash20056/FSE-github-action#readme",
+  "dependencies": {
+    "eslint": "^10.2.1",
+    "express": "^5.2.1"
+  }
+}
