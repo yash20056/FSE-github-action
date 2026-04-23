@@ -1,66 +1,31 @@
-name: Real CI Workflow (No PR)
+name: artifact
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
-
-  lint-check:
+  job1:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Create a file
+        run: echo "Hello World" > file.txt
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          node-version: 18
+          name: my-file
+          path: file.txt
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Lint Check
-        run: npm run lint
-
-
-  test-check:
+  job2:
+    needs: job1
     runs-on: ubuntu-latest
-    needs: lint-check
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Download a file
+        uses: actions/download-artifact@v4
         with:
-          node-version: 18
+          name: my-file
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Test
-        run: npm test
-
-
-  build-check:
-    runs-on: ubuntu-latest
-    needs: test-check
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Code
-        run: npm run build
+# add a step to read file.txt
+      - name: read file.txt
+        run: cat file.txt
